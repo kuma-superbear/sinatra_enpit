@@ -1,10 +1,10 @@
 require 'sinatra'
 
 get '/' do
-  "Hello World!"
+  'Hello world!'
 end
 
-get '/' do
-  pass if Time.now > time_for('Dec 23, 2012')
-  "まだ時間がある"
+get '/index' do
+  erb :index
 end
+
