@@ -1,0 +1,38 @@
+!!!
+
+%html{:lang => "ja"}
+	%head
+		%title= @title
+		%meta{:content => "text/html", :"http-equiv" => "Content-Type", :charset => "utf-8"}
+
+	%body
+		%h1 #{@title}
+
+		%h2 Comment Write
+		%form{:method => "POST", :action => '/request_print'}
+			%input{:type => "hidden", :name => "_method", :value => "PUT"}
+			%table
+				%tr
+					%td Your Name
+					%td
+						%input{:type => "text", :name => "name"}
+				%tr
+					%td Title
+					%td
+						%input{:type => "text", :name => "title"}
+				%tr
+					%td Comment
+					%td
+						%input{:type => "text", :name => "message"}
+				%tr
+					%td
+					%td
+						%input{:type => "submit", :value => "コメントする"}
+						%input{:type => "reset", :value => "内容をリセットする"}
+
+		%h2 Comments List
+		%table
+			- @comments_data.each do |comment|
+				%tr
+					- comment.each do |element|
+						%td= element
